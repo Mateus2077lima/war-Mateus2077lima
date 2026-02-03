@@ -15,12 +15,21 @@
 // ============================================================================
 
 // Inclusão das bibliotecas padrão necessárias para entrada/saída, alocação de memória, manipulação de strings e tempo.
+#include <stdio.h>
+#include <stdlib.h>
 
 // --- Constantes Globais ---
 // Definem valores fixos para o número de territórios, missões e tamanho máximo de strings, facilitando a manutenção.
+#define Num_territorio 5
 
 // --- Estrutura de Dados ---
 // Define a estrutura para um território, contendo seu nome, a cor do exército que o domina e o número de tropas.
+//Declaração da struct do territorio
+typedef struct {
+    char nome[30];
+    char cor[10];
+    int tropas;
+}territorio;
 
 // --- Protótipos das Funções ---
 // Declarações antecipadas de todas as funções que serão usadas no programa, organizadas por categoria.
@@ -32,6 +41,42 @@
 // --- Função Principal (main) ---
 // Função principal que orquestra o fluxo do jogo, chamando as outras funções em ordem.
 int main() {
+
+    //Declaração do vetor da struct
+    territorio vetor[5];
+
+    printf("=================\n");
+    printf("   Inicio War\n");
+    printf("=================\n");
+
+    printf("\nVamos cadastrar os 5 territorios iniciais do nosso mundo:\n");
+    
+    for (int i = 0; i < Num_territorio; i++){
+
+        //Cadastro dos 5 territorios
+        printf("\n--- Cadastro territorio %d ---\n", i + 1);
+        printf("\nNome do territorio: ");
+        scanf("%s",vetor[i].nome);
+        printf("Cor do exercito (EX: verde,azul): ");
+        scanf("%s",vetor[i].cor);
+        printf("Número de tropas: ");
+        scanf("%d",&vetor[i].tropas);
+
+    }
+
+    printf("\n=============================\n");
+    printf("MAPA DO MUNDO - ESTADO ATUAL\n");
+    printf("=============================\n");
+
+    for (int i = 0; i < Num_territorio; i++){
+
+        //Mostrando os territorios cadastrados
+        printf("\nTERRITORIO %d: \n",i + 1);
+        printf("  - Nome: %s\n", vetor[i].nome);
+        printf("  - Dominado por: Exercito %s\n", vetor[i].cor);
+        printf("  - Tropas: %d\n", vetor[i].tropas);
+
+    }
     // 1. Configuração Inicial (Setup):
     // - Define o locale para português.
     // - Inicializa a semente para geração de números aleatórios com base no tempo atual.
